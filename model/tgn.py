@@ -98,6 +98,7 @@ class TGN(torch.nn.Module):
                                      self.n_node_features,
                                      1)
 
+  
   def compute_temporal_embeddings(self, source_nodes, destination_nodes, negative_nodes, edge_times,
                                   edge_idxs, n_neighbors=20):
     """
@@ -191,6 +192,8 @@ class TGN(torch.nn.Module):
         negative_node_embedding = memory[negative_nodes]
 
     return source_node_embedding, destination_node_embedding, negative_node_embedding
+  
+  
 
   def compute_edge_probabilities(self, source_nodes, destination_nodes, negative_nodes, edge_times,
                                  edge_idxs, n_neighbors=20):
