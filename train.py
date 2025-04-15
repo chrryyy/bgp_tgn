@@ -131,6 +131,7 @@ train_losses = []
 val_aps = []
 
 for epoch in range(args.n_epoch):
+    epoch_start = time.time()
     if args.use_memory:
         tgn.memory.__init_memory__()
 
@@ -167,7 +168,7 @@ for epoch in range(args.n_epoch):
 
     avg_loss = np.mean(epoch_loss)
     train_losses.append(avg_loss)
-    logger.info(f"Epoch {epoch} | Loss: {avg_loss:.4f}")
+    logger.info(f"Epoch {epoch} | Loss: {avg_loss:.4f} | Time: {time.time() - epoch_start:.2f}s")
 
     # Validation
     tgn.set_neighbor_finder(full_ngh_finder)
